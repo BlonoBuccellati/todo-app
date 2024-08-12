@@ -1,8 +1,5 @@
-import Image from 'next/image';
-
+import { tasks } from '@/data/task';
 export default async function Home() {
-  const data = await fetch('http://localhost:3003/tasks');
-  const tasks = await data.json();
   console.log(tasks);
   return (
     <div className='text-center m-4 w-[600px]'>
@@ -10,7 +7,7 @@ export default async function Home() {
         return (
           <div
             key={task.id}
-            className='my-8 break-words shadow rounded-md py-6'
+            className='my-8 break-words shadow rounded-md py-6 bg-white'
           >
             <div className='text-xl'>{task.title}</div>
             <div className='pt-5 text-sm'>{task.description}</div>
