@@ -9,8 +9,9 @@ const createNewData = (data: TodoProps, todoList: TodoProps[]) => {
   return newData;
 };
 
+const initStateTodo = undefined;
 export const TodoReducer = (
-  todoList: TodoProps[],
+  todoList: TodoProps[] = initStateTodo,
   { type, data }: TodoDispatchProps
 ) => {
   switch (type) {
