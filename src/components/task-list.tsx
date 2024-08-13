@@ -1,8 +1,7 @@
-import { useTodo, useTodoDispatch } from '@/context/todo-context';
+import { useTodo } from '@/context/todo-context';
 import EditTask from './edit-task-dialog';
 import { TodoProps } from '@/types/todo-type';
 import TaskCard from './task-card';
-import { Button } from './ui/button';
 import TaskButton from './task-button';
 
 interface TaskListProps {

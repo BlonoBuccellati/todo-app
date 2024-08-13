@@ -1,17 +1,17 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import AddTask from '../add-task-dialog';
+import AddTask from '@/components/add-task-dialog';
 import Link from 'next/link';
-import { useStatusDispatch } from '../../context/todo-status-context';
+import { useStatusDispatch } from '@/context/todo-status-context';
 
 const Sidebar = () => {
   const statusDispatch = useStatusDispatch();
   const clickTodoHandler = () => {
-    statusDispatch({ payload: { type: 'todo' } });
+    statusDispatch && statusDispatch({ payload: { type: 'todo' } });
   };
   const clickCompleteHandler = () => {
-    statusDispatch({ payload: { type: 'completed' } });
+    statusDispatch && statusDispatch({ payload: { type: 'completed' } });
   };
   return (
     // TODO:クリックしたら色が変わるようにしたい。(グローバルなstateでやっている途中。)

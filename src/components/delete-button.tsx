@@ -1,6 +1,5 @@
 import { Button } from './ui/button';
 import { useTodoDispatch } from '@/context/todo-context';
-import { useStatusState } from '@/context/todo-status-context';
 
 const DeleteButton = ({
   id,

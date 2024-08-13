@@ -1,5 +1,4 @@
 import { TodoProps } from '@/types/todo-type';
-import { useRouter } from 'next/router';
 
 interface TaskCard {
   task: TodoProps;

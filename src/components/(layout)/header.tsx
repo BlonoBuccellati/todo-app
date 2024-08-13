@@ -15,7 +15,7 @@ const Header = () => {
   const statusDispatch = useStatusDispatch();
 
   const clickHandler = () => {
-    statusDispatch({ payload: { type: undefined } });
+    statusDispatch && statusDispatch({ payload: { type: undefined } });
   };
   return (
     <div className='fixed top-0 left-0 w-full overflow-hidden backdrop-blur-md'>

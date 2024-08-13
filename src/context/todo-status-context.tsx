@@ -10,7 +10,7 @@ import {
 const initState = undefined;
 const ContextStatusState = createContext<string | undefined>(initState);
 type statusContextType = React.Dispatch<TodoStatusReducerProps>;
-const ContextStatusDispatch = createContext<statusContextType>();
+const ContextStatusDispatch = createContext<statusContextType | null>(null);
 
 interface TodoStatusContextProviderProps {
   children: React.ReactNode;

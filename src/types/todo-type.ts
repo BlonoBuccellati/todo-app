@@ -8,7 +8,6 @@ export interface TodoProps {
 // dispatchするときに使用する。
 export interface TodoDispatchProps {
   type: 'add' | 'delete' | 'edit' | 'completed';
-  id?: number;
   data: TodoProps;
 }
 

@@ -11,7 +11,7 @@ const createNewData = (data: TodoProps, todoList: TodoProps[]) => {
 
 export const TodoReducer = (
   todoList: TodoProps[],
-  { type, id, data }: TodoDispatchProps
+  { type, data }: TodoDispatchProps
 ) => {
   switch (type) {
     case 'add':
