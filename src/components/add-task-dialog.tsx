@@ -1,5 +1,8 @@
+'use client';
+
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -10,11 +13,29 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
+import { useState } from 'react';
+import { useTodoDispatch } from '@/context/todo-context';
 
 interface AddTaskProps {
   children: React.ReactNode;
 }
 const AddTask = ({ children }: AddTaskProps) => {
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+
+  const dispatch = useTodoDispatch();
+  const handleAddSubmit = (e: any) => {
+    console.log(e);
+    const newTask = {
+      id: Date.now(),
+      title,
+      description,
+      completed: false,
+    };
+    console.log(dispatch);
+    dispatch && dispatch({ type: 'add', data: newTask });
+  };
+
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
@@ -30,7 +51,12 @@ const AddTask = ({ children }: AddTaskProps) => {
             <Label htmlFor='name' className='text-right'>
               タイトル
             </Label>
-            <Input id='name' className='col-span-3' placeholder='todo' />
+            <Input
+              id='name'
+              className='col-span-3'
+              placeholder='todo'
+              onChange={(e) => setTitle(e.target.value)}
+            />
           </div>
           <div className='grid grid-cols-4 items-center gap-4'>
             <Label htmlFor='contents' className='text-right'>
@@ -40,11 +66,16 @@ const AddTask = ({ children }: AddTaskProps) => {
               id='contents'
               className='col-span-3 h-60'
               placeholder='コンテンツ'
+              onChange={(e) => setDescription(e.target.value)}
             />
           </div>
         </div>
         <DialogFooter>
-          <Button type='submit'>追加</Button>
+          <DialogClose>
+            <Button type='submit' onClick={handleAddSubmit}>
+              追加
+            </Button>
+          </DialogClose>
         </DialogFooter>
       </DialogContent>
     </Dialog>

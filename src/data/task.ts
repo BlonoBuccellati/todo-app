@@ -1,5 +1,5 @@
-import { todoProps } from '@/types/todo-type';
-export const tasks: todoProps[] = [
+import { TodoProps } from '@/types/todo-type';
+export const tasks: TodoProps[] = [
   {
     id: 1,
     title: 'Buy groceries',
