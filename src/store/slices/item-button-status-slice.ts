@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { TodoStatusStateProps } from '@/types/todo-type';
+import { TodoToggleButtonStatusProps } from '@/types/todo-type';
 
-const initialState: TodoStatusStateProps = {
+const initialState: TodoToggleButtonStatusProps = {
   selected: undefined,
 };
 

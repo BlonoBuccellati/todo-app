@@ -1,8 +1,8 @@
 'use client';
 
-import { Button } from '@/components/ui/button';
-import AddTask from '@/components/add-task-dialog';
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+import AddTask from '@/components/dialog/add-task-dialog';
 
 import { useDispatch } from 'react-redux';
 import {

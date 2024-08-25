@@ -1,7 +1,8 @@
-import { TodoProps } from '@/types/todo-type';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { tasks } from '@/data/task';
+
+import { TodoProps, TodoIdProps } from '@/types/todo-type';
 
 const todoListSlice = createSlice({
   name: 'todoList',
@@ -11,13 +12,13 @@ const todoListSlice = createSlice({
       const newData = createNewData(action.payload, state);
       state.push(newData);
     },
-    taskRemove(state, action: PayloadAction<TodoProps>) {
+    taskRemove(state, action: PayloadAction<TodoIdProps>) {
       const index = state.findIndex((item) => item.id === action.payload.id);
       // インデックスが見つかれば削除
       index !== -1 && state.splice(index, 1);
     },
     //idだけ渡せばいい
-    taskCompleted(state, action: PayloadAction<TodoProps>) {
+    taskCompleted(state, action: PayloadAction<TodoIdProps>) {
       const itemToComplete = state.find(
         (item) => item.id === action.payload.id
       );
@@ -25,7 +26,7 @@ const todoListSlice = createSlice({
         itemToComplete.completed = !itemToComplete.completed;
       }
     },
-    edit(state, action: PayloadAction<TodoProps>) {
+    taskEdit(state, action: PayloadAction<TodoProps>) {
       let elementForEdit = state.find((item) => item.id === action.payload.id);
       console.log(elementForEdit);
       if (elementForEdit) {
@@ -49,5 +50,5 @@ const createNewData = (data: any, todoList: any) => {
 // ストアに登録用
 export default todoListSlice.reducer;
 // コンポーネントで利用するためにexport
-export const { taskAdd, taskRemove, taskCompleted, edit } =
+export const { taskAdd, taskRemove, taskCompleted, taskEdit } =
   todoListSlice.actions;

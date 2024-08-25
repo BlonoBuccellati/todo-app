@@ -1,3 +1,4 @@
+// TodoList操作用
 export interface TodoProps {
   id: number;
   title: string;
@@ -5,13 +6,10 @@ export interface TodoProps {
   completed: boolean;
 }
 
-// dispatchするときに使用する。
-export interface TodoDispatchProps {
-  type: 'add' | 'delete' | 'edit' | 'completed';
-  data: TodoProps;
-}
-
-// status用
-export interface TodoStatusStateProps {
+// toggle用
+export interface TodoToggleButtonStatusProps {
   selected: 'completed' | 'todo' | undefined;
 }
+
+// Todoでは、idのみ使用する場面が多い。
+export type TodoIdProps = Pick<TodoProps, 'id'>;

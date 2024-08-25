@@ -22,10 +22,17 @@ const Header = () => {
   };
   return (
     <div className='fixed top-0 left-0 w-full overflow-hidden backdrop-blur-md'>
-      <Link href='/' onClick={clickHandler}>
+      <Link href='/'>
         <header className='h-16 flex items-center border p-4'>
-          <Image src='todo-icon.svg' alt='todoアプリ' width={30} height={30} />
-          <span className={cn('text-3xl', font.className)}>Todoアプリ</span>
+          <div onClick={clickHandler}>
+            <Image
+              src='todo-icon.svg'
+              alt='todoアプリ'
+              width={30}
+              height={30}
+            />
+            <span className={cn('text-3xl', font.className)}>Todoアプリ</span>
+          </div>
         </header>
       </Link>
     </div>

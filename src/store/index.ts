@@ -1,4 +1,4 @@
-import todoList from '@/store/slices/todo-list-slice';
+import todoList from '@/store/slices/task-crud-slice';
 import statusChange from './slices/item-button-status-slice';
 
 import { configureStore } from '@reduxjs/toolkit';
