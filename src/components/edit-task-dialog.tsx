@@ -18,24 +18,15 @@ import { useState } from 'react';
 import { TodoProps } from '@/types/todo-type';
 import { edit } from '@/store/slices/todo-list-slice';
 import { useDispatch } from 'react-redux';
+import useTaskManage from '@/hooks/task-manage';
 
 interface AddTaskProps {
   children: React.ReactNode;
   task: TodoProps;
 }
 const EditTask = ({ children, task }: AddTaskProps) => {
-  const [title, setTitle] = useState(task.title);
-  const [description, setDescription] = useState(task.description);
-
-  const dispatch = useDispatch();
-  const handleEditSubmit = () => {
-    const newData = { ...task };
-    newData.title = title;
-    newData.description = description;
-
-    const actionEdit = edit(newData);
-    dispatch(actionEdit);
-  };
+  const { title, setTitle, description, setDescription, handleEditSubmit } =
+    useTaskManage(task);
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>

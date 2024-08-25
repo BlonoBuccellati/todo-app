@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 import {
   toggleCompleted,
   toggleTodo,
-} from '@/store/slices/item-button-status-slices';
+} from '@/store/slices/item-button-status-slice';
 
 const Sidebar = () => {
   const statusDispatch = useDispatch();

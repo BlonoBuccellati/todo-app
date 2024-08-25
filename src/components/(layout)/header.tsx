@@ -1,7 +1,7 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { toggleAll } from '@/store/slices/item-button-status-slices';
+import { toggleAll } from '@/store/slices/item-button-status-slice';
 import { Roboto } from 'next/font/google';
 import Image from 'next/image';
 import Link from 'next/link';

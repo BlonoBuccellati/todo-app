@@ -1,5 +1,5 @@
 import todoList from '@/store/slices/todo-list-slice';
-import statusChange from './slices/item-button-status-slices';
+import statusChange from './slices/item-button-status-slice';
 
 import { configureStore } from '@reduxjs/toolkit';
 

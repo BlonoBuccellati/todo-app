@@ -25,13 +25,13 @@ const todoListSlice = createSlice({
         itemToComplete.completed = !itemToComplete.completed;
       }
     },
-    edit(state, { payload }) {
-      let elementForEdit = state.find((item) => item.id === payload.id);
+    edit(state, action: PayloadAction<TodoProps>) {
+      let elementForEdit = state.find((item) => item.id === action.payload.id);
       console.log(elementForEdit);
       if (elementForEdit) {
-        elementForEdit.completed = payload.completed;
-        elementForEdit.title = payload.title;
-        elementForEdit.description = payload.description;
+        elementForEdit.completed = action.payload.completed;
+        elementForEdit.title = action.payload.title;
+        elementForEdit.description = action.payload.description;
       }
     },
   },
