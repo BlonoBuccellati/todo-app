@@ -1,10 +1,10 @@
+import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import './globals.css';
+
 import Header from '../components/(layout)/header';
 import Sidebar from '../components/(layout)/sidebar';
-import { TodoContextProvider } from '@/context/todo-context';
-import TodoStatusContextProvider from '@/context/todo-status-context';
+import TodoProvider from '@/store/provider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -23,17 +23,15 @@ export default function RootLayout({
       <body className={inter.className}>
         <main className='h-full bg-slate-50 mt-16'>
           <div className='flex flex-col h-full'>
-            <TodoContextProvider>
-              <TodoStatusContextProvider>
-                <Header />
-                <div className='flex flex-row h-full'>
-                  <div className='w-60 hidden sm:block'>
-                    <Sidebar />
-                  </div>
-                  <div className='h-full'>{children}</div>
+            <TodoProvider>
+              <Header />
+              <div className='flex flex-row h-full'>
+                <div className='w-60 hidden sm:block'>
+                  <Sidebar />
                 </div>
-              </TodoStatusContextProvider>
-            </TodoContextProvider>
+                <div className='h-full'>{children}</div>
+              </div>
+            </TodoProvider>
           </div>
         </main>
       </body>

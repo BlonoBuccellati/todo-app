@@ -1,5 +1,8 @@
 import { Button } from './ui/button';
-import { useTodoDispatch } from '@/context/todo-context';
+
+import { useDispatch } from 'react-redux';
+
+import { taskCompleted } from '@/store/slices/todo-list-slice';
 
 const CompletedButton = ({
   id,
@@ -14,14 +17,12 @@ const CompletedButton = ({
   completed: boolean;
   buttonName: string | undefined;
 }) => {
-  const dispatch = useTodoDispatch();
+  const dispatch = useDispatch();
   const clickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    dispatch &&
-      dispatch({
-        type: 'completed',
-        data: { id, title, description, completed },
-      });
+
+    const action = taskCompleted({ id, title, description, completed });
+    dispatch(action);
   };
   return (
     <Button

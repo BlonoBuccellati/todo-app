@@ -1,21 +1,14 @@
-import { TodoReducer } from '@/context/reducer/todo-reducer';
+import todoList from '@/store/slices/todo-list-slice';
+import statusChange from './slices/item-button-status-slices';
 
-import { createStore } from 'redux';
-import { deflate } from 'zlib';
+import { configureStore } from '@reduxjs/toolkit';
 
-const initState = 0;
-const reducer = (
-  state = initState,
-  { type, step }: { type: string; step: number }
-) => {
-  switch (type) {
-    case 'add':
-      return state + step;
-    case 'minus':
-      return state - step;
-    default:
-      throw new Error('不明なアクションです。');
-  }
-};
+const store = configureStore({
+  reducer: {
+    todoList: todoList,
+    toggleChange: statusChange,
+  },
+});
+export default store;
 
-export default createStore(TodoReducer);
+export type RootState = ReturnType<typeof store.getState>;

@@ -13,9 +13,11 @@ import {
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
+
 import { useState } from 'react';
-import { useTodoDispatch } from '@/context/todo-context';
 import { TodoProps } from '@/types/todo-type';
+import { edit } from '@/store/slices/todo-list-slice';
+import { useDispatch } from 'react-redux';
 
 interface AddTaskProps {
   children: React.ReactNode;
@@ -24,13 +26,15 @@ interface AddTaskProps {
 const EditTask = ({ children, task }: AddTaskProps) => {
   const [title, setTitle] = useState(task.title);
   const [description, setDescription] = useState(task.description);
-  const dispatch = useTodoDispatch();
+
+  const dispatch = useDispatch();
   const handleEditSubmit = () => {
     const newData = { ...task };
     newData.title = title;
     newData.description = description;
 
-    dispatch && dispatch({ type: 'edit', data: newData });
+    const actionEdit = edit(newData);
+    dispatch(actionEdit);
   };
   return (
     <Dialog>

@@ -12,9 +12,6 @@ export interface TodoDispatchProps {
 }
 
 // status用
-export interface TodoStatusReducerProps {
-  payload: { type: 'completed' | 'todo' | undefined };
-}
 export interface TodoStatusStateProps {
-  state: 'completed' | 'todo' | undefined;
+  selected: 'completed' | 'todo' | undefined;
 }

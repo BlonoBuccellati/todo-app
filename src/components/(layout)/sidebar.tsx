@@ -3,15 +3,23 @@
 import { Button } from '@/components/ui/button';
 import AddTask from '@/components/add-task-dialog';
 import Link from 'next/link';
-import { useStatusDispatch } from '@/context/todo-status-context';
+
+import { useDispatch } from 'react-redux';
+import {
+  toggleCompleted,
+  toggleTodo,
+} from '@/store/slices/item-button-status-slices';
 
 const Sidebar = () => {
-  const statusDispatch = useStatusDispatch();
+  const statusDispatch = useDispatch();
+
   const clickTodoHandler = () => {
-    statusDispatch && statusDispatch({ payload: { type: 'todo' } });
+    const todoAction = toggleTodo();
+    statusDispatch(todoAction);
   };
   const clickCompleteHandler = () => {
-    statusDispatch && statusDispatch({ payload: { type: 'completed' } });
+    const completedChangeAction = toggleCompleted();
+    statusDispatch(completedChangeAction);
   };
   return (
     // TODO:クリックしたら色が変わるようにしたい。(グローバルなstateでやっている途中。)

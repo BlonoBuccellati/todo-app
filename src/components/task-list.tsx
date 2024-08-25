@@ -1,15 +1,18 @@
-import { useTodo } from '@/context/todo-context';
-import EditTask from './edit-task-dialog';
+import { useSelector } from 'react-redux';
+
+import TaskCard from '@/components/task-card';
+import EditTask from '@/components/edit-task-dialog';
+import TaskButton from '@/components/task-button';
+
 import { TodoProps } from '@/types/todo-type';
-import TaskCard from './task-card';
-import TaskButton from './task-button';
+import { RootState } from '@/store';
 
 interface TaskListProps {
   completed?: boolean;
 }
 
 const TaskList = ({ completed }: TaskListProps) => {
-  const tasks = useTodo();
+  const tasks = useSelector((state: RootState) => state.todoList);
 
   const displayTasks = tasks.filter((task: TodoProps) => {
     if (completed === undefined) {

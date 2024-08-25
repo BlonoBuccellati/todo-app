@@ -1,10 +1,11 @@
 'use client';
 
 import { TodoProps } from '@/types/todo-type';
-import { useStatusState } from '@/context/todo-status-context';
 
 import CompletedButton from './complete-button';
 import DeleteButton from './delete-button';
+import { useSelector } from 'react-redux';
+import { RootState } from '@/store';
 
 const getButtonName = (state: string | undefined) => {
   switch (state) {
@@ -17,7 +18,7 @@ const getButtonName = (state: string | undefined) => {
   }
 };
 const TaskButton = ({ id, title, description, completed }: TodoProps) => {
-  const state = useStatusState();
+  const state = useSelector((state: RootState) => state.toggleChange.selected);
   const buttonName = getButtonName(state);
 
   const CardButton = () => {

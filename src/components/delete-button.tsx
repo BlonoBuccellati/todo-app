@@ -1,5 +1,7 @@
+import { taskRemove } from '@/store/slices/todo-list-slice';
 import { Button } from './ui/button';
-import { useTodoDispatch } from '@/context/todo-context';
+
+import { useDispatch } from 'react-redux';
 
 const DeleteButton = ({
   id,
@@ -14,14 +16,11 @@ const DeleteButton = ({
   completed: boolean;
   buttonName: string | undefined;
 }) => {
-  const dispatch = useTodoDispatch();
+  const dispatch = useDispatch();
   const clickHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    dispatch &&
-      dispatch({
-        type: 'delete',
-        data: { id, title, description, completed },
-      });
+    const action = taskRemove({ id, title, description, completed });
+    dispatch(action);
   };
   return (
     <Button

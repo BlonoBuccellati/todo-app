@@ -1,10 +1,12 @@
 'use client';
 
-import { useStatusDispatch } from '@/context/todo-status-context';
 import { cn } from '@/lib/utils';
+import { toggleAll } from '@/store/slices/item-button-status-slices';
 import { Roboto } from 'next/font/google';
 import Image from 'next/image';
 import Link from 'next/link';
+
+import { useDispatch } from 'react-redux';
 
 const font = Roboto({
   weight: '900',
@@ -12,10 +14,11 @@ const font = Roboto({
   display: 'swap',
 });
 const Header = () => {
-  const statusDispatch = useStatusDispatch();
+  const dispatch = useDispatch();
 
   const clickHandler = () => {
-    statusDispatch && statusDispatch({ payload: { type: undefined } });
+    const action = toggleAll();
+    dispatch(action);
   };
   return (
     <div className='fixed top-0 left-0 w-full overflow-hidden backdrop-blur-md'>
